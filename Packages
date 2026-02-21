@@ -18,3 +18,15 @@ Description: Enables the ability to install unsigned/fakesigned iOS applications
 Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
 Depiction: https://cydia.akemi.ai/?page/ai.akemi.appsyncunified
 Name: AppSync Unified
+
+Package: com.macciti.classicios
+Name: Classic iOS
+Version: 1.2
+Architecture: iphoneos-arm
+Depends: com.anemonetheming.anemone
+Description: I miss my iPhone 3GS
+Maintainer: iC <apt@macciti.com>
+Author: Axel4 <axel.new46@yahoo.com>
+Sponsor: MacCiti <http://www.macciti.com/cydia/pages/sponsor.php>
+Section: Themes (SpringBoard)
+Depiction: http://www.macciti.com/pages/classicios/index.php
