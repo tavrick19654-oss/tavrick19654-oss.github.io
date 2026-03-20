@@ -1,0 +1,49 @@
+name: Sync and Run Script
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow on push to the main branch
+
+jobs:
+  sync-repos:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Clone another GitHub repo (not owned by you)
+      - name: Checkout another repository
+        run: |
+          git clone https://github.com/Shugabuga/Silica.git copyme
+
+      # Step 2: Clone your own repository
+      - name: Checkout your own repository
+        run: |
+          git clone https://github.com/tavrick19654-oss/tavrick19654-oss.github.io.git myrepo
+        
+
+      # Step 4: Go to the other repo's folder
+      - name: Change directory to other repo's folder
+        run: |
+          cd ~/copyme  # Replace with the actual folder in the other repo
+
+      # Step 5: Install dependencies from the other repo
+      - name: Install requirements in other repo
+        run: |
+          pip install -r requirements.txt --break-system-packages
+
+      # Step 6: Run setup.sh script in the other repo
+      - name: Run setup.sh in the other repo
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
+
+      # Step 7: Go back to your repo and copy files to the other repo
+      - name: Copy files from your repo to the other repo
+        run: |
+          cp -r ~/myrepo/debs/* ~/copyme/Packages
+
+      # Step 8: Run python3 index.py in the other repo
+      - name: Run index.py in the other repo
+        run: |
+          cd ~/copyme/
+          python3 index.py
