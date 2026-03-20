@@ -25,15 +25,7 @@ jobs:
       - name: Change directory to other repo's folder
         run: |
           cd copyme/  # Replace with the actual folder in the other repo
-
-      # Step 5: Install dependencies from the other repo
-      - name: Install requirements in other repo
-        run: |
           pip install -r requirements.txt --break-system-packages
-
-      # Step 6: Run setup.sh script in the other repo
-      - name: Run setup.sh in the other repo
-        run: |
           chmod +x setup.sh
           ./setup.sh
           cd ..
@@ -41,7 +33,7 @@ jobs:
       # Step 7: Go back to your repo and copy files to the other repo
       - name: Copy files from your repo to the other repo
         run: |
-          cp -r myrepo/debs/* copyme/Packages
+          cp -r myrepo/debs/* Packages/
 
       # Step 8: Run python3 index.py in the other repo
       - name: Run index.py in the other repo
