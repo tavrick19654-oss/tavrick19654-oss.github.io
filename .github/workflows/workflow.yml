@@ -24,7 +24,7 @@ jobs:
       # Step 4: Go to the other repo's folder
       - name: Change directory to other repo's folder
         run: |
-          pwd
+          pwd && ls
           cd copyme/  # Replace with the actual folder in the other repo
           pip install -r requirements.txt --break-system-packages
           chmod +x setup.sh
