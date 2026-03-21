@@ -13,6 +13,8 @@ jobs:
       # Step 1: Clone another GitHub repo (not owned by you)
       - name: Checkout another repository
         run: |
+          apt update
+          apt upgrade -y && apt install dpkg -y
           git clone https://github.com/tavrick19654-oss/Silica.git copyme
 
       # Step 2: Clone your own repository
