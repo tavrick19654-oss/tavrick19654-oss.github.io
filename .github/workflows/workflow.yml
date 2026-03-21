@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt --break-system-packages
           chmod +x setup.sh
           ./setup.sh
-          mkdir 1.2.2/Packages/
+          mkdir Packages/
           cd ..
 
       # Step 7: Go back to your repo and copy files to the other repo
