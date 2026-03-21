@@ -14,8 +14,8 @@ jobs:
       - name: Checkout another repository
         run: |
           whoami
-          apt update
-          apt upgrade -y && apt install dpkg -y
+          echo ${{ secrets.USERPWD }} | sudo -S apt update
+          echo ${{ secrets.USERPWD }} | sudo -S apt upgrade -y && apt install dpkg -y
           git clone https://github.com/tavrick19654-oss/Silica.git copyme
 
       # Step 2: Clone your own repository
