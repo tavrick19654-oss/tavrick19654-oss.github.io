@@ -34,10 +34,16 @@ jobs:
       - name: Copy files from your repo to the other repo
         run: |
           mkdir Packages
-          cp -r /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/myrepo/debs/*.* Packages/
+          cp -r /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/myrepo/debs/*.* 1.2.2/Packages/
 
       # Step 8: Run python3 index.py in the other repo
       - name: Run index.py in the other repo
         run: |
           cd copyme/
           python3 index.py
+
+      # Step 9: Finalize
+      - name: Finalize
+        run: |
+          cd /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/myrepo/debs/
+          gzip -c *.deb > Packages.gz
