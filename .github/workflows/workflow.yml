@@ -13,10 +13,6 @@ jobs:
       # Step 1: Clone another GitHub repo (not owned by you)
       - name: Checkout another repository
         run: |
-          whoami
-          echo ${{ secrets.USERPWD }} | sudo -S apt update
-          echo ${{ secrets.USERPWD }} | sudo -S apt upgrade -y 
-          echo ${{ secrets.USERPWD }} | sudo -S apt install dpkg -y
           git clone https://github.com/tavrick19654-oss/Silica.git copyme
 
       # Step 2: Clone your own repository
@@ -37,12 +33,14 @@ jobs:
       # Step 7: Go back to your repo and copy files to the other repo
       - name: Copy files from your repo to the other repo
         run: |
-          cp -r /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/myrepo/Package/ /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/copyme/Packages/
+          cp -r /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/myrepo/Package/ /home/runner/work/tavrick19654-oss.github.io/tavrick19654-oss.github.io/copyme/
 
       # Step 8: Run python3 index.py in the other repo
       - name: Run index.py in the other repo
         run: |
           cd copyme/
+          rm -rf Packages/
+          mv Package/ Packages/
           python3 index.py
 
       # Step 9: Finalize
