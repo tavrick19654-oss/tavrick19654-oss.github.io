@@ -34,7 +34,7 @@ jobs:
       - name: Copy files from your repo to the other repo
         run: |
           mkdir Packages
-          cp -r ../myrepo/debs/* Packages/
+          cp -r ../myrepo/debs/*.* Packages/
 
       # Step 8: Run python3 index.py in the other repo
       - name: Run index.py in the other repo
